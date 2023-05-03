@@ -49,3 +49,26 @@
 1. 账号必须先做好实名制认证，并添加至少一个实名制的人的信息
 2. 第一次打开后会进入登录页面，需要手动选择扫码登陆
 3. 如果太久没用，需要先清空目录下的 cookie 文件，然后在重新登录
+
+## 使用方法
+首先`pip3 install -r requirements.txt`安装依赖，然后`python3 main.py`
+
+## 常见问题
+Q: 如果遇到 "Message: Service ./chromedriver unexpectedly exited. Status code was: -9" 怎么办？
+
+A: 首先检查是否被macos限制打开，执行命令xattr -d com.apple.quarantine ./chromedriver；
+然后检查chromedriver版本是否与chrome版本匹配，113.0.5672.63版本chrome与ChromeDriver 113.0.5672.24匹配，双击chromedrive运行效果为
+```
+Starting ChromeDriver 113.0.5672.24 (65f30d4e8051264233c679c7cd3743679f15339d-refs/branch-heads/5672@{#243}) on port 9515
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+```
+
+Q: Mac怎么将 cdc_ 替换为 dog_
+A: 
+```
+perl -pi -e 's/cdc_/dog_/g' /path/to/chromedriver
+//替换完成后查找下，如果查找不到说明替换成功了
+perl -ne 'while(/cdc_/g){print "$&\n";}' /path/to/chromedriver
+```

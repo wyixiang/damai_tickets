@@ -10,6 +10,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.chrome.service import Service
 
 
 class Concert(object):
@@ -19,8 +20,8 @@ class Concert(object):
         self.price = price  # 票价序号优先级
         self.real_name = real_name  # 实名者序号
         self.status = 0  # 状态标记
-        self.time_start = 0  # 开始时间
-        self.time_end = 0  # 结束时间
+        self.time_start = time()  # 开始时间
+        self.time_end = time()  # 结束时间
         self.num = 0  # 尝试次数
         self.ticket_num = ticket_num  # 购买票数
         self.nick_name = nick_name  # 用户昵称
@@ -79,7 +80,8 @@ class Concert(object):
     def enter_concert(self):
         print(u'###打开浏览器，进入大麦网###')
         if not exists('cookies.pkl'):   # 如果不存在cookie.pkl,就获取一下
-            self.driver = webdriver.Chrome(executable_path=self.driver_path)
+            s = Service(self.driver_path)
+            self.driver = webdriver.Chrome(service=s)
             self.get_cookie()
             print(u'###成功获取Cookie，重启浏览器###')
             self.driver.quit()

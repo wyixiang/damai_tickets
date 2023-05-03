@@ -4,8 +4,8 @@
     "price": [2],
     "real_name": [1],
     "nick_name": "",
-    "ticket_num": 3,
-    "driver_path": "./chromedriver.exe",
+    "ticket_num": 1,
+    "driver_path": "./chromedriver",
     "damai_url": "https://www.damai.cn/",
-    "target_url": "https://m.damai.cn/damai/detail/item.html?itemId=704494827883&spm=a2o71.category.itemlist.ditem_3"
+    "target_url": "https://m.damai.cn/damai/detail/item.html?utm=&itemId=710903097983"
 }
